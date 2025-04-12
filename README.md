@@ -23,6 +23,10 @@ DATABASE_URL="postgresql://USERNAME:PASSWORD@localhost:5432/mydb
 ```
 npx prisma migrate dev --name init
 ```
+запуск API
+```
+yarn start
+```
 # API Документация
 
 ## Введение
