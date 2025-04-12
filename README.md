@@ -1,7 +1,7 @@
 # Инструкция
 Клонируем
 ```
-https://github.com/SunnBr0/ApiNodeJsShtupmf
+git clone https://github.com/SunnBr0/ApiNodeJsShtupmf
 ```
 Переходим  в папку
 ```
