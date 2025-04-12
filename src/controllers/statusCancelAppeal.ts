@@ -17,14 +17,19 @@ export const statusCancelAppeal = async (req: Request, res: Response) => {
     if (!appeal) {
       return res.status(404).json({ error: "Обращение не найдено" });
     }
+
     if (appeal.status === Status.COMPLETED) {
-      return res.status(404).json({ error: "Нельзя отменить обращение, которое находится в статусе 'завершено'" });
+      return res.status(404).json({
+        error:
+          "Нельзя отменить обращение, которое находится в статусе 'завершено'",
+      });
     }
     // Обновляем статус
     await prisma.appeal.update({
       where: { id: Number(id) },
       data: { status: Status.CANCELED, cancelReason: cancelReason },
     });
+
     return res.status(200).json({
       message: "Статус обновлен на 'Отменено'",
     });

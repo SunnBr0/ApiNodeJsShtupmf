@@ -13,11 +13,11 @@ yarn install
 ```
 PostgreSQL
 Добавляем файл в корневую директорию файл .env    
-mydb - название базы данных   
+mydb - название базы данных(если её нет,то она создасться)   
 USERNAME - название   
 PASSWORD - пароль   
 ```
-DATABASE_URL="postgresql://USERNAME:PASSWORD@localhost:5432/mydb
+DATABASE_URL="postgresql://USERNAME:PASSWORD@localhost:5432/mydb"
 ```
 Миграция для базы данных с Prisma
 ```
@@ -36,7 +36,7 @@ yarn start
 ## Базовая URL
 
 ```
-https://localhost:3000/api/v1
+http://localhost:3000/api/v1
 ```
 
 ## Endpoints

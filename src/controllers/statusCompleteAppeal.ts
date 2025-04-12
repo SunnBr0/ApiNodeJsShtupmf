@@ -11,7 +11,7 @@ export const statusCompleteAppeal = async (req: Request, res: Response) => {
     // Находим обращение по теме и тексту
     const appeal = await prisma.appeal.findUnique({
       where: {
-        id:Number(id)
+        id: Number(id),
       },
     });
 
@@ -19,8 +19,12 @@ export const statusCompleteAppeal = async (req: Request, res: Response) => {
     if (!appeal) {
       return res.status(404).json({ error: "Обращение не найдено" });
     }
+
     if (appeal.status === Status.CANCELED) {
-      return res.status(400).json({ error: "Нельзя завершить обращение, которое находится в статусе 'отменено'" });
+      return res.status(400).json({
+        error:
+          "Нельзя завершить обращение, которое находится в статусе 'отменено'",
+      });
     }
     // Обновляем статус обращения на "В работе"
     await prisma.appeal.update({
