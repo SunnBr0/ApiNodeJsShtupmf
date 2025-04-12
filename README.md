@@ -1,7 +1,28 @@
 # Инструкция
-
-
-
+Клонируем
+```
+https://github.com/SunnBr0/ApiNodeJsShtupmf
+```
+Переходим  в папку
+```
+cd ApiNodeJsShtupmf
+```
+Ставим зависимости
+```
+yarn install
+```
+PostgreSQL
+Добавляем файл в корневую директорию файл .env    
+mydb - название базы данных   
+USERNAME - название   
+PASSWORD - пароль   
+```
+DATABASE_URL="postgresql://USERNAME:PASSWORD@localhost:5432/mydb
+```
+Миграция для базы данных с Prisma
+```
+npx prisma migrate dev --name init
+```
 # API Документация
 
 ## Введение
