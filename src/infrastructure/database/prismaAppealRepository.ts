@@ -1,5 +1,6 @@
 import { Appeal, PrismaClient } from "@prisma/client";
 import { IAppealRepository } from "../../domain/repositories/iAppealRepository";
+import { Status } from "../../types/statusAppeal";
 
 const prisma = new PrismaClient();
 
@@ -29,6 +30,39 @@ export class PrismaAppealRepository implements IAppealRepository {
       where: { id },
       data: { status },
     });
+  }
+
+  async complete(id: number, resolutionText?: string): Promise<void> {
+    await prisma.appeal.update({
+      where: { id },
+      data: {
+        status: Status.COMPLETED,
+        resolutionText,
+      },
+    });
+  }
+
+  async cancel(id: number, cancelReason?: string): Promise<void> {
+    await prisma.appeal.update({
+      where: { id },
+      data: {
+        status: Status.CANCELED,
+        cancelReason,
+      },
+    });
+  }
+
+  async cancelAllInProgress(): Promise<number> {
+    const result = await prisma.appeal.updateMany({
+      where: {
+        status: Status.IN_PROGRESS,
+      },
+      data: {
+        status: Status.CANCELED,
+      },
+    });
+
+    return result.count;
   }
 
   async findMany(params: {

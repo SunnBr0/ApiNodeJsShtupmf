@@ -9,7 +9,7 @@ cd ApiNodeJsShtupmf
 ```
 Ставим зависимости
 ```
-yarn install
+pnpm i
 ```
 PostgreSQL
 Добавляем файл в корневую директорию файл .env    
@@ -25,7 +25,7 @@ npx prisma migrate dev --name init
 ```
 запуск API
 ```
-yarn start
+pnpm run dev
 ```
 # API Документация
 

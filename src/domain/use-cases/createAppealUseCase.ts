@@ -1,4 +1,4 @@
-import { Status } from "../../service/statusAppeal";
+import { Status } from "../../types/statusAppeal";
 import { IAppealRepository } from "../repositories/iAppealRepository";
 
 export class CreateAppealUseCase {

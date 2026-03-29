@@ -12,7 +12,7 @@ export class CreateAppealController {
     } catch (error: unknown) {
       if (error instanceof Error && error.message === "VALIDATION_ERROR") return res.status(400).json({ error: "..." });
       if (error instanceof Error && error.message === "ALREADY_EXISTS") return res.status(409).json({ error: "..." });
-      return res.status(500).json({ error: "Internal Server Error" });
+      return res.status(500).json({ error: "Внутренняя ошибка сервера" });
     }
   };
 }

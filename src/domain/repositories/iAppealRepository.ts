@@ -12,5 +12,8 @@ export interface IAppealRepository {
     createdAtToExclusive?: Date;
   }): Promise<Appeal[]>;
 
-  updateStatus(id:number,status:string):Promise<void>
+  updateStatus(id: number, status: string): Promise<void>;
+  complete(id: number, resolutionText?: string): Promise<void>;
+  cancel(id: number, cancelReason?: string): Promise<void>;
+  cancelAllInProgress(): Promise<number>;
 }

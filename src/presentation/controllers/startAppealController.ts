@@ -26,7 +26,7 @@ export class StartAppealController {
       }
 
       return res.status(500).json({
-        error: "Internal Server Error",
+        error: "Внутренняя ошибка сервера",
       });
     }
   };

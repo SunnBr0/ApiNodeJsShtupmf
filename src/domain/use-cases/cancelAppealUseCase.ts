@@ -1,10 +1,10 @@
 import { Status } from "../../types/statusAppeal";
 import { IAppealRepository } from "../repositories/iAppealRepository";
 
-export class StartAppealUseCase {
+export class CancelAppealUseCase {
   constructor(private appealRepository: IAppealRepository) {}
 
-  async execute(id: string): Promise<void> {
+  async execute(id: string, cancelReason?: string): Promise<void> {
     const appealId = Number(id);
 
     if (!Number.isInteger(appealId) || appealId <= 0) {
@@ -17,6 +17,10 @@ export class StartAppealUseCase {
       throw new Error("NOT_FOUND");
     }
 
-    await this.appealRepository.updateStatus(appealId, Status.IN_PROGRESS);
+    if (appeal.status === Status.COMPLETED) {
+      throw new Error("INVALID_STATUS");
+    }
+
+    await this.appealRepository.cancel(appealId, cancelReason);
   }
 }

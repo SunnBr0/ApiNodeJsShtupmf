@@ -9,10 +9,6 @@ export class GetAppealsByDateTimeController {
   handle = async (req: Request, res: Response) => {
     try {
       const { date, from, to } = req.query;
-console.log("date ",date);
-console.log("from ",from);
-console.log("to ",to);
-
 
       const appeals = await this.getAppealsByDateTimeUseCase.execute({
         date: date as string | undefined,
@@ -28,7 +24,7 @@ console.log("to ",to);
         });
       }
       return res.status(500).json({
-        error: "Internal Server Error",
+        error: "Внутренняя ошибка сервера",
       });
     }
   };

@@ -18,7 +18,7 @@ export class GetAppealByIdController {
         return res.status(404).json({ error: "Обращение не найдено" });
       }
 
-      return res.status(500).json({ error: "Internal Server Error" });
+      return res.status(500).json({ error: "Внутренняя ошибка сервера" });
     }
   };
 }
