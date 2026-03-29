@@ -8,7 +8,7 @@
     "express": "4"
   },
   "scripts": {
-    "start": "nodemon",
+    "dev": "nodemon",
     "build": "tsc",
     "serve": "node dist/index.js",
     "lint": "eslint src --ext .ts,.js",

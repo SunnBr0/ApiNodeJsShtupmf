@@ -16,3 +16,5 @@ model Appeal {
   cancelReason   String?
   createdAt      DateTime @default(now())
 }
+
+
